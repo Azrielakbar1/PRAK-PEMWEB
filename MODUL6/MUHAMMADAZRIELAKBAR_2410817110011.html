@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JPhotography</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *, body {
+      box-sizing: border-box;
+      text-decoration: none;
+      list-style: none;
+    }
+
+    .top-bar {
+      height: 90px;
+      background-color: #F8F9FB;
+    }
+
+    .brand-title {
+      font-weight: 800;
+    }
+
+    .nav-link-custom {
+      font-weight: 600;
+      cursor: pointer;
+      color: #333;
+    }
+
+    .current-page {
+      border: 1px solid #666;
+      border-radius: 6px;
+      background-color: #eee;
+    }
+
+    .hero-section {
+      height: 55vh;
+    }
+
+    .highlight-border {
+      border: 1px solid black;
+      border-radius: 40px;
+    }
+
+    .hero-desc {
+      font-weight: 400;
+      color: #555;
+      letter-spacing: 6px;
+    }
+
+    .img-display-box {
+      max-width: 1200px;
+      margin-inline: auto;
+      padding: 30px 20px;
+    }
+
+    .gallery-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .image-box {
+      transition: all 0.3s ease-in-out;
+    }
+
+    .image-box img {
+      width: 275px;
+      height: 200px;
+      object-fit: cover;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .image-box:hover {
+      transform: scale(1.06);
+    }
+
+    .category-display {
+      display: none;
+    }
+
+    .category-display.active {
+      display: block;
+    }
+
+    .filter-control:hover {
+      background-color: #f0f0f0;
+    }
+
+    .frame-corners div {
+      z-index: 9999;
+      pointer-events: none;
+      background-color: transparent;
+      border-color: #252525;
+      border-style: solid;
+      height: 100px;
+      position: fixed;
+      width: 100px;
+    }
+
+    .corner-top-left { top: 0; left: 0; border-width: 10px 0 0 10px; }
+    .corner-top-right { top: 0; right: 0;  border-width: 10px 10px 0 0; }
+    .corner-bottom-left { bottom: 0; left: 0; border-width: 0 0 10px 10px; }
+    .corner-bottom-right { bottom: 0; right: 0; border-width: 0 10px 10px 0; }
+
+    .footer-section {
+      height: 350px;
+      background: #fff;
+    }
+
+    .social-icons {
+      font-size: 1.7rem;
+      color: #666;
+    }
+    a {
+    text-decoration: none;
+  }
+
+  .nav-link-custom {
+    font-weight: 600;
+    cursor: pointer;
+    color: #333;
+    text-decoration: none;}
+  </style>
+</head>
+<body>
+  <div class="row top-bar align-items-center">
+    <div class="col-4 d-flex justify-content-center">
+      <h1 class="brand-title" style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">JPhotography</h1>
+    </div>
+    <div class="col-2"></div>
+    <div class="col-6">
+      <ul class="d-flex justify-content-center mt-3" style="font-family:'Playfair Display', serif;">
+        <li><a class="px-3 py-2 nav-link-custom current-page" href="#">HOME</a></li>
+        <li><a class="px-3 py-2 nav-link-custom" href="#">ABOUT ME</a></li>
+        <li><a class="px-3 py-2 nav-link-custom" href="#">PORTFOLIO</a></li>
+        <li><a class="px-3 py-2 nav-link-custom" href="#">CONTACT</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row hero-section">
+    <div class="col d-flex flex-column justify-content-center align-items-center">
+      <h2 style="font-family: 'Playfair Display', serif; font-weight: bold;">Hi. Hello.. I Am JohnDas...!</h2>
+      <h2 style="font-family: 'Playfair Display', serif;font-weight: bold">I Travel Around The World To Get The Best Photos..!</h2>
+      <p class="hero-desc">AWARD WINNING PHOTOGRAPHER / CINEMATOGRAPHER / WRITER</p>
+    </div>
+  </div>
+
+  <div class="frame-corners">
+    <div class="corner-top-left"></div>
+    <div class="corner-top-right"></div>
+    <div class="corner-bottom-left"></div>
+    <div class="corner-bottom-right"></div>
+  </div>
+
+  <div class="row container-fluid">
+    <div class="col d-flex justify-content-center">
+      <ul class="d-flex mt-3" style="font-family:'Playfair Display', serif;">
+        <li><a class="px-3 py-2 nav-link-custom filter-control highlight-border" href="#" data-category="all">All</a></li>
+        <li><a class="px-3 py-2 nav-link-custom filter-control" href="#" data-category="landscape">Landscape</a></li>
+        <li><a class="px-3 py-2 nav-link-custom filter-control" href="#" data-category="portrait">Portrait</a></li>
+        <li><a class="px-3 py-2 nav-link-custom filter-control" href="#" data-category="product">Product</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="img-display-box">
+    <div id="all-section" class="category-display active">
+      <div class="gallery-row">
+        <div class="image-box"><img src="miau1.jpeg" alt="g1"></div>
+        <div class="image-box"><img src="miau2.jpeg" alt="g2"></div>
+        <div class="image-box"><img src="miau3.jpeg" alt="g3"></div>
+        <div class="image-box"><img src="miau4.jpeg" alt="g4"></div>
+      </div>
+      <div class="gallery-row">
+        <div class="image-box"><img src="mike1.jpeg" alt="g5"></div>
+        <div class="image-box"><img src="mike2.jpeg" alt="g6"></div>
+        <div class="image-box"><img src="mike4.jpeg" alt="g7"></div>
+        <div class="image-box"><img src="mike5.jpeg" alt="g8"></div>
+      </div>
+      <div class="gallery-row">
+        <div class="image-box"><img src="ronaldo1.jpg" alt="g9"></div>
+        <div class="image-box"><img src="ronaldo2.jpeg" alt="g10"></div>
+        <div class="image-box"><img src="ronaldo3.jpg" alt="g11"></div>
+        <div class="image-box"><img src="ronaldomessi3.jpg" alt="g12"></div>
+      </div>
+      <div class="gallery-row">
+        <div class="image-box"><img src="chillguy.jpg" alt="g13"></div>
+        <div class="image-box"><img src="chillguy.jpg" alt="g14"></div>
+        <div class="image-box"><img src="chillguy.jpg" alt="g15"></div>
+        <div class="image-box"><img src="chillguy.jpg" alt="g16"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row footer-section">
+    <div class="col d-flex flex-column align-items-center justify-content-center">
+      <h1 class="brand-title" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">JPhotography</h1>
+      <p>&copy; Copyrights 2019 All Rights Reserved</p>
+      <div class="social-icons">
+        <i class="fa-brands fa-dribbble pe-5"></i>
+        <i class="fa-brands fa-behance pe-5"></i>
+        <i class="fa-brands fa-instagram pe-5"></i>
+        <i class="fa-brands fa-500px pe-5"></i>
+        <i class="fa-brands fa-flickr pe-5"></i>
+        <i class="fa-brands fa-square-facebook pe-5"></i>
+        <i class="fa-brands fa-twitter pe-5"></i>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
